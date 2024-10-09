@@ -17,8 +17,8 @@ export class TaskService {
     return this.taskRepository.save(createTaskDto);
   }
 
-  findAll() {
-    return `This action returns all task`;
+  async findAllByUser(userId: number): Promise<Task[]> {
+    return this.taskRepository.find({ where: { user: { id: userId } }});
   }
 
   findOne(id: number) {
@@ -30,6 +30,6 @@ export class TaskService {
   }
 
   remove(id: number) {
-    return `This action removes a #${ id } task`;
+    return this.taskRepository.delete(id);
   }
 }

@@ -17,9 +17,9 @@ export class TaskController {
     }
   }
 
-  @Get()
-  findAll() {
-    return this.taskService.findAll();
+  @Get(':userId')
+  async findAll(@Param('userId') userId: number) {
+    return this.taskService.findAllByUser(userId);
   }
 
   @Get(':id')
