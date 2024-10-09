@@ -3,7 +3,7 @@ import { CreateTaskDto } from "./dto/create-task.dto";
 import { UpdateTaskDto } from "./dto/update-task.dto";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Task } from "./entities/task.entity";
-import { Repository } from "typeorm";
+import { Like, Repository } from "typeorm";
 
 @Injectable()
 export class TaskService {
@@ -21,12 +21,17 @@ export class TaskService {
     return this.taskRepository.find({ where: { user: { id: userId } }});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${ id } task`;
-  }
+  // async findOne(searchTerm: string): Promise<Task[]> {
+  //   return this.taskRepository.find({
+  //     where: [
+  //       { title: Like(`%${searchTerm}%`) },
+  //       { description: Like(`%${searchTerm}%`) },
+  //     ]
+  //   });
+  // }
 
   update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${ id } task`;
+    return this.taskRepository.update(id, updateTaskDto);
   }
 
   remove(id: number) {

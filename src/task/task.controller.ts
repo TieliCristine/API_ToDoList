@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException } from "@nestjs/common";
+import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException, Query } from "@nestjs/common";
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { Task } from "./entities/task.entity";
 
 @Controller('task')
 export class TaskController {
@@ -21,11 +22,11 @@ export class TaskController {
   async findAll(@Param('userId') userId: number) {
     return this.taskService.findAllByUser(userId);
   }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.taskService.findOne(+id);
-  }
+  //
+  // @Get('search')
+  // async findOne(@Query('q') searchTerm: string): Promise<Task[]> {
+  //   return this.taskService.findOne(searchTerm);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
