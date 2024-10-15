@@ -37,25 +37,30 @@ $ npm install
 2. Create Required Configuration Files
    Before running the project, you need to set up two essential configuration files that are not included in the repository.
 
-.env file
-Create a .env file in the root directory of the project and add the following environment variables:
-Create the database and fill in the value of the variables:
+.env
 
-## .env
+Create a .env file in the root directory of the project and add the following environment variables:
+
+```bash
 DATABASE_HOST=
 DATABASE_PORT=
 DATABASE_USERNAME=
 DATABASE_PASSWORD=
 DATABASE_NAME=
+```
+Create the database and fill in the value of the variables.
 
-src/auth/constants.ts file
+src/auth/constants.ts 
+
 Create a file at src/auth/constants.ts and add the following content:
 
+```bash
 export const jwtConstants = {
 secret: 'mysecret',
 };
-
 # The key 'mysecret' is just an example.
+```
+
 
 These files are crucial for the application to run properly.
 
