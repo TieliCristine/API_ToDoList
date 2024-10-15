@@ -28,9 +28,36 @@
 
 ## Project setup
 
+1. Clone the repository and install dependencies
+
 ```bash
 $ npm install
 ```
+
+2. Create Required Configuration Files
+   Before running the project, you need to set up two essential configuration files that are not included in the repository.
+
+.env file
+Create a .env file in the root directory of the project and add the following environment variables:
+Create the database and fill in the value of the variables:
+
+## .env
+DATABASE_HOST=
+DATABASE_PORT=
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
+DATABASE_NAME=
+
+src/auth/constants.ts file
+Create a file at src/auth/constants.ts and add the following content:
+
+export const jwtConstants = {
+secret: 'mysecret',
+};
+
+# The key 'mysecret' is just an example.
+
+These files are crucial for the application to run properly.
 
 ## Compile and run the project
 
